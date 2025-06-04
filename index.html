@@ -1,46 +1,57 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
 </head>
+
 <body>
-    
-    <section>
 
-        <div class="div_cadastro">
+    <section id="section_cadastro">
 
-            <p>Informe o nome do cavalo</p>
-            <input type="text" id="ipt_nome_cavalo" >
-            <span> Insira no minimo 2 cavalos e no máximo 6 cavalos</span>
-            
-            <button onclick="cadastrar()">Cadastrar Cavalo </button>
-            <button onclick="avancar_cadastro()">Avançar</button>
+        <div class="div_cadastro_todos">
+            <div class="div-cadastro" id="div_cadastro_cavalo">
+                <p>Informe o nome do cavalo</p>
+                <input type="text" id="ipt_nome_cavalo">
+                <span> Insira no minimo 2 cavalos e no máximo 6 cavalos</span>
 
+                <button onclick="cadastrar()">Cadastrar Cavalo </button>
+                <button onclick="avancar_cadastro_voltas()">Avançar</button>
+            </div>
+            <div class="div-cadastro" id="div_cadastro_voltas" style="display: none;">
+                <p>Informe quantas corridas os cavalos devem dar</p>
+                <input type="number" id="ipt_cadastrar_voltas">
+                <button onclick="cadastrar_voltas()">Cadastrar Voltas</button>
+                <button onclick="voltar_cadastro()">Voltar</button>
+            </div>
         </div>
-
         <div class="div_cadastro_painel">
 
             <p>Cavalos Cadastrados</p>
 
-        <div class="div_cadastrados">
-            <!-- cavalos cadastrados -->
-        </div>
+            <div class="div_cadastrados">
+
+
+                <!-- cavalos cadastrados -->
+            </div>
 
         </div>
 
     </section>
 
-    <div class="div_erros">
+    <div class="div_erros" style="display: none;">
 
         <p id="texto_erro">
 
         </p>
+        <button onclick="fechar_modal()">OK</button>
 
     </div>
 
 
 </body>
+
 </html>
 <script src="assets/script.js"></script>
