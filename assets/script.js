@@ -22,8 +22,8 @@ function avancar_cadastro_voltas() {
 
     if (vt_guardar_nomes.length < 2) {
         div_erros("Por favor, insira no minimo 2 cavalos")
-    } else if (vt_guardar_nomes.length > 6) {
-        div_erros("Por favor, insira no máximo 6 cavalos")
+    } else if (vt_guardar_nomes.length > 7) {
+        div_erros("Por favor, insira no máximo 7 cavalos")
     } else {
         div_cadastro_cavalo.style.display = "none"
         div_cadastro_voltas.style.display = "flex"
@@ -57,12 +57,17 @@ function preencher_painel() {
     div_cadastrados.innerHTML = ''
 
     for (let i = 0; i < vt_guardar_nomes.length; i++) {
-
-        div_cadastrados.innerHTML += `     <div>
-                <img src="" alt="">
-                <p> ${vt_guardar_nomes[i]}</p>
-                <img src="assets/img/sair.png" alt="" onclick="deletar_cavalo('${vt_guardar_nomes[i]}')">
-            </div>`
+        if (i > 6) {
+             div_erros("Numero máximo de cavalos cadastrados! Clique em Avançar")
+        }else{
+            div_cadastrados.innerHTML += `
+        <div>
+                    <img src="assets/img/images.jpeg" alt="">
+                    <p> ${vt_guardar_nomes[i]}</p>
+                    <img src="assets/img/lixeira.png" id="lixeira" alt="" onclick="deletar_cavalo('${vt_guardar_nomes[i]}')">
+         </div>
+        `
+        }
     }
     if (ax_total_corridas != 0) {
         div_cadastrados.innerHTML += `<p> Voltas Cadastradas: ${ax_total_corridas}</p>`
@@ -105,7 +110,7 @@ function comecar_jogo() {
     setTimeout(() => {
         tela_carregamento.style.display = "none"
         animar_cavalos()
-    }, 1000);
+    }, 3000);
     // mostrar_podium()
 }
 function mostrar_podium() {
@@ -183,11 +188,11 @@ function animar_cavalos() {
             multipicador = 2.7
         } else if (ax_total_corridas == 7) {
             multipicador = 2.6
-        }else if (ax_total_corridas == 8) {
+        } else if (ax_total_corridas == 8) {
             multipicador = 2.2
-        }else if (ax_total_corridas == 9) {
+        } else if (ax_total_corridas == 9) {
             multipicador = 2
-        }else{
+        } else {
             multipicador = 1.8
         }
 
