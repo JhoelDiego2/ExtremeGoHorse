@@ -8,8 +8,8 @@
     <title></title>
 </head>
 
-<body>
-    <section id="tela_carregamento" style="display: none;">
+<body id="body">
+    <section id="tela_carregamento" style=" display: none;">
         <div class="carregamento_menu">
             <p ">CARREGANDO</p>
             <span class=" span_1"></span>
@@ -21,10 +21,10 @@
         </div>
     </section>
 
-    <section id="section_corrida">
+    <section id="section_corrida" style="display: none;">
         <h2>Corrida eXtreme</h2>
 
-         <!-- <div class="espaco_total">
+        <!-- <div class="espaco_total">
             <div class="espaco_cavalo">
                 <p>fdsafdsa</p>
                 <img src="assets/img/MLP Walking by The-Paper-Pony.gif" alt="">
@@ -69,34 +69,72 @@
 
     </section>
     <section id="section_cadastro">
-
-        <div class="div_cadastro_todos">
-            <div class="div-cadastro" id="div_cadastro_cavalo">
-                <p>Informe o nome do cavalo</p>
-                <input type="text" id="ipt_nome_cavalo">
-                <span> Insira no minimo 2 cavalos e no máximo 6 cavalos</span>
-
-                <button onclick="cadastrar()">Cadastrar Cavalo </button>
-                <button onclick="avancar_cadastro_voltas()">Avançar</button>
-            </div>
-            <div class="div-cadastro" id="div_cadastro_voltas" style="display: none;">
-                <p>Informe quantas corridas os cavalos devem dar</p>
-                <input type="number" id="ipt_cadastrar_voltas">
-                <button onclick="cadastrar_voltas()">Cadastrar Voltas</button>
-                <button onclick="voltar_cadastro()">Voltar</button>
+        <div class="background_efeito">
+            <div class="div_cadastro div_cadastro_todos">
+                <div class="div-cadastro" id="div_cadastro_cavalo">
+                    <p class="cad_titulo">Informe o nome do cavalo</p>
+                    <input type="text" id="ipt_nome_cavalo">
+                    <span> Insira no minimo 2 cavalos e no máximo 6 cavalos</span>
+                    <br><br>
+                    <button onclick="cadastrar()" class="btn-grad">Cadastrar Cavalo </button>
+                    <button onclick="avancar_cadastro_voltas()" class="btn-grad">Avançar</button>
+                </div>
+                <div class="div-cadastro" id="div_cadastro_voltas" style="display: none;">
+                    <p class="cad_titulo">Informe quantas corridas os cavalos devem dar</p>
+                    <input type="number" id="ipt_cadastrar_voltas">
+                    <button onclick="cadastrar_voltas()" class="btn-grad">Cadastrar Voltas</button>
+                    <button onclick="voltar_cadastro()" class="btn-grad">Voltar</button>
+                </div>
             </div>
         </div>
-        <div class="div_cadastro_painel">
+        <div class="background_efeito">
 
-            <p>Cavalos Cadastrados</p>
+            <div class="div_cadastro div_cadastro_painel ">
 
-            <div class="div_cadastrados">
+                <p class="cad_titulo">Cavalos Cadastrados</p>
 
+                <div class="div_cadastrados">
 
-                <!-- cavalos cadastrados -->
+                    <!-- <div>
+                    <img src="assets/img/images.jpeg" alt="">
+                    <p> BiaLindonaUau</p>
+                    <img src="assets/img/lixeira.png" id="lixeira" alt="" onclick="deletar_cavalo('BiaLindonaUau')">
+                </div>
+                <div>
+                    <img src="assets/img/images.jpeg" alt="">
+                    <p> BiaLindonaUau</p>
+                    <img src="assets/img/lixeira.png" id="lixeira" alt="" onclick="deletar_cavalo('BiaLindonaUau')">
+                </div>
+                <div>
+                    <img src="assets/img/images.jpeg" alt="">
+                    <p> BiaLindonaUau</p>
+                    <img src="assets/img/lixeira.png" id="lixeira" alt="" onclick="deletar_cavalo('BiaLindonaUau')">
+                </div>
+                <div>
+                    <img src="assets/img/images.jpeg" alt="">
+                    <p> BiaLindonaUau</p>
+                    <img src="assets/img/lixeira.png" id="lixeira" alt="" onclick="deletar_cavalo('BiaLindonaUau')">
+                </div>
+                <div>
+                    <img src="assets/img/images.jpeg" alt="">
+                    <p> BiaLindonaUau</p>
+                    <img src="assets/img/lixeira.png" id="lixeira" alt="" onclick="deletar_cavalo('BiaLindonaUau')">
+                </div>
+                <div>
+                    <img src="assets/img/images.jpeg" alt="">
+                    <p> BiaLindonaUau</p>
+                    <img src="assets/img/lixeira.png" id="lixeira" alt="" onclick="deletar_cavalo('BiaLindonaUau')">
+                </div>
+                <div>
+                    <img src="assets/img/images.jpeg" alt="">
+                    <p> BiaLindonaUau</p>
+                    <img src="assets/img/lixeira.png" id="lixeira" alt="" onclick="deletar_cavalo('BiaLindonaUau')">
+                </div> -->
+                </div>
+
             </div>
-
         </div>
+
 
     </section>
     <section class="section_erros" style="display: none;">
@@ -112,7 +150,7 @@
     </section>
     <!-- exeprimento so  -->
 
-    <p id="resultado"></p>
+    <p id="resultado" style="display: none;"></p>
 
 </body>
 
