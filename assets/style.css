@@ -1,0 +1,234 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; 
+}
+
+#section_corrida {
+    height: 100dvh;
+    min-width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+#section_corrida h2 {
+    text-align: center;
+    letter-spacing: 6px;
+}
+
+#section_corrida img {
+    width: 8.5vw;
+}
+
+.espaco_total {
+    width: 100vw;
+}
+.espaco_total:nth-child(1) {
+    top: 10vh;
+    left: 0%;
+}
+.espaco_total:nth-child(2) {
+    top: 20vh;
+    left: 0%;
+}
+.espaco_total:nth-child(3) {
+    top: 30vh;
+    left: 0%;
+}
+.espaco_total:nth-child(4) {
+    top: 0%;
+    left: 0%;
+}
+.espaco_total:nth-child(5) {
+    top: 0%;
+    left: 0%;
+}
+.espaco_total:nth-child(6) {
+    top: 0%;
+    left: 0%;
+} */
+
+.espaco_cavalo {
+    background-color: aqua;
+    width: 8vw;
+    text-align: center;
+    letter-spacing: 2px;
+    transition: 5s ease;
+}
+
+.espaco_cavalo p {
+    position: relative;
+    top: 2vh;
+}
+
+#tela_carregamento {
+    background: radial-gradient(circle, rgba(0, 0, 0, 0) 1%, rgba(0, 0, 0, 0.445) 55%, black 100%),
+        url('img/maxresdefault.jpg');
+    background-size: contain;
+    background-position: center;
+    left: 0vw;
+    height: 100dvh;
+    width: 100vw;
+    top: 0vh;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+}
+.carregamento_menu {
+    color: #ffffff;
+    position: absolute;
+    bottom: 0;
+    width: 50VW;
+    padding: 0vh 2vw;
+    height: 6vh;
+    font-size: 2.6rem;
+    bottom: 4vh;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    gap: 3vw;
+    font-weight: 700;
+}
+
+.carregamento_menu span {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    border-radius: 100px;
+    background-color: #ffffff;
+    bottom: 6vh;
+    animation: loading 400ms ease infinite alternate;
+}
+.carregamento_menu .span_2{
+    animation-delay: 100ms;
+}
+.carregamento_menu .span_3{
+    animation-delay: 200ms;
+}
+.carregamento_menu .span_4{
+    animation-delay: 400ms;
+}
+.carregamento_menu .span_5{
+    animation-delay: 500ms;
+}
+
+@keyframes loading {
+    0% {
+        top: 10px;
+        height: 5px;
+        border-radius: 50px 50px 25px 25px;
+        box-shadow: 0px 5px 5px 4px rgb(0, 0, 0);
+        background-color: #cf1698;
+    }
+
+    40% {
+        height: 20px;
+        border-radius: 50%;
+    }
+
+    100% {
+        top: -20px;
+    }
+}
+
+.carregamento_menu p {
+    animation: letra 400ms ease infinite;
+}
+
+@keyframes letra {
+    0% {
+        color: #cf1698;
+    }
+}
+section{
+    width: 100vw;
+    height: 100dvh;
+}
+.section_erros{
+    background-color: rgba(0, 0, 0, 0.596);
+    position: absolute;
+    top: 0;
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.div_erros{
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 1px white;
+    width: 40vw;
+    height: 60vh;
+    top: 20vh;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    padding: 4vh 3vw;
+    background-position: center;
+    animation: scala_pequena 2s;
+    background: radial-gradient(rgba(0, 0, 0, 0.404) 40%, rgba(0, 0, 0, 0.63) 100%),  url('img/img_fundo.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    font-size: 2rem;
+    
+}
+@keyframes scala_pequena {
+    0% {
+        transform: scale(0.2);
+    }
+
+    90% {
+        transform: scale(1.2);
+
+    }
+
+    100% {
+        transform: scale(1.0);
+
+    }
+}
+
+.div_erros button {
+    background-color: #00000000;
+    color: white;
+    padding: 1vh;
+    font-size: 1.3rem;
+    text-align: center;
+    text-transform: uppercase;
+    border: solid 4px rgba(255, 255, 255, 0.534);
+    width: 80%;
+    border-image-slice: 1;
+    border-width: 1.2px;
+    border-left: none;
+    border-right: none;
+    border-image-source: linear-gradient(270deg, hsla(0, 0%, 31%, 0), #ffffff, hsla(0, 0%, 100%, 0));
+    ;
+    cursor: pointer;
+}
+
+.div_erros button:hover {
+    width: 100%;
+    border-width: 2px;
+    font-size: 1.5rem;
+}
+.div_erros img{
+    width: 10%;
+    position: relative;
+    bottom: 6vh;
+    transform: scale(3.5);
+}
