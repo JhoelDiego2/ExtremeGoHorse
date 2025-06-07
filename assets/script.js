@@ -2,6 +2,9 @@ var vt_guardar_nomes = [];
 var ax_total_corridas = 0
 var div_cadastro_cavalo = document.getElementById('div_cadastro_cavalo')
 var div_cadastro_voltas = document.getElementById('div_cadastro_voltas')
+var tela_carregamento = document.getElementById('tela_carregamento')
+var section_cadastro = document.getElementById('section_cadastro')
+
 var js_voltas = {}
 var vt_resultado_final = []
 function cadastrar() {
@@ -58,8 +61,8 @@ function preencher_painel() {
 
     for (let i = 0; i < vt_guardar_nomes.length; i++) {
         if (i > 6) {
-             div_erros("Numero máximo de cavalos cadastrados! Clique em Avançar")
-        }else{
+            div_erros("Numero máximo de cavalos cadastrados! Clique em Avançar")
+        } else {
             div_cadastrados.innerHTML += `
         <div>
                     <img src="assets/img/images.jpeg" alt="">
@@ -91,7 +94,6 @@ function voltar_cadastro() {
 function gerar_aleatorio() {
     return Number((Math.random() * 2 + 4).toFixed(1))
 }
-var tela_carregamento = document.getElementById('tela_carregamento')
 function comecar_jogo() {
     for (let i = 0; i < ax_total_corridas; i++) {
         js_voltas[`vt_volta_${i}`] = [];
@@ -210,4 +212,13 @@ function animar_cavalos() {
         volta_atual++;
 
     }, 1000);
+}
+const tela_inicial = document.getElementById('tela_inicial')
+function abrir_cadastro() {
+    tela_carregamento.style.display = "flex"
+    tela_inicial.style.display = "none"
+    setTimeout(() => {
+        tela_carregamento.style.display = "none"
+        section_cadastro.style.display = "flex"
+    }, 2000);
 }

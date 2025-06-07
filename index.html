@@ -9,6 +9,19 @@
 </head>
 
 <body id="body">
+    <section id="tela_inicial">
+        <svg viewBox="0 0 800 150" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <path id="curva" d="M 50,100 Q 400,0 750,100" />
+            </defs>
+            <text>
+                <textPath href="#curva" startOffset="50%" text-anchor="middle">
+                    SEJA BEM-VINDO(A)
+                </textPath>
+            </text>
+        </svg>
+        <button onclick="abrir_cadastro()">Começar</button>
+    </section>
     <section id="tela_carregamento" style=" display: none;">
         <div class="carregamento_menu">
             <p ">CARREGANDO</p>
@@ -68,7 +81,7 @@
 
 
     </section>
-    <section id="section_cadastro">
+    <section id="section_cadastro" style=" display: none;">
         <div class="background_efeito">
             <div class="div_cadastro div_cadastro_todos">
                 <div class="div-cadastro" id="div_cadastro_cavalo">
