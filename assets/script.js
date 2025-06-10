@@ -4,9 +4,20 @@ var div_cadastro_cavalo = document.getElementById('div_cadastro_cavalo')
 var div_cadastro_voltas = document.getElementById('div_cadastro_voltas')
 var tela_carregamento = document.getElementById('tela_carregamento')
 var section_cadastro = document.getElementById('section_cadastro')
-
+var section_corrida = document.getElementById('section_corrida')
+var tela_aposta = document.getElementById('tela_aposta')
 var js_voltas = {}
 var vt_resultado_final = []
+var cavalo_aposta = ''
+var aposta = document.querySelector('.aposta')
+var cavalos = {
+    0: ['assets/img/11.png', 'assets/img/raonm.jpeg', 'assets/img/2.gif'],
+    1: ['assets/img/12.png', 'assets/img/fluttershy.jpeg', 'assets/img/6.gif'],
+    2: ['assets/img/12.png', 'assets/img/ponk.jpeg', 'assets/img/3.gif'],
+    3: ['assets/img/12.png', 'assets/img/rox.jpeg', 'assets/img/1.gif'],
+    4: ['assets/img/12.png', 'assets/img/chap.jpeg', 'assets/img/5.gif'],
+    5: ['assets/img/12.png', 'assets/img/branc.jpeg', 'assets/img/4.gif'],
+}
 function cadastrar() {
 
     var nome_cavalo = ipt_nome_cavalo.value;
@@ -59,23 +70,20 @@ function preencher_painel() {
     var div_cadastrados = document.querySelector('.div_cadastrados')
     div_cadastrados.innerHTML = ''
 
-    for (let i = 0; i < vt_guardar_nomes.length; i++) {
-        if (i > 6) {
+    for (let i = vt_guardar_nomes.length - 1; i >= 0; i--) {
+        if (i > 5) {
             div_erros("Numero máximo de cavalos cadastrados! Clique em Avançar")
         } else {
             div_cadastrados.innerHTML += `
         <div>
-                    <img src="assets/img/images.jpeg" alt="">
+                    <img src="${cavalos[i][1]}" alt="">
                     <p> ${vt_guardar_nomes[i]}</p>
                     <img src="assets/img/lixeira.png" id="lixeira" alt="" onclick="deletar_cavalo('${vt_guardar_nomes[i]}')">
          </div>
         `
         }
     }
-    if (ax_total_corridas != 0) {
-        div_cadastrados.innerHTML += `<p> Voltas Cadastradas: ${ax_total_corridas}</p>`
-        div_cadastrados.innerHTML += `<button onclick="comecar_jogo()">Começar</button> `
-    }
+
 }
 function cadastrar_voltas() {
     var ax_voltas = ipt_cadastrar_voltas.value
@@ -83,7 +91,9 @@ function cadastrar_voltas() {
         div_erros(`Total de voltas: ${ax_voltas} Invalido. Insira um numero entre 5 e 10   `)
     } else {
         ax_total_corridas = ax_voltas
-        preencher_painel()
+        if (ax_total_corridas != 0) {
+            total_voltas.innerHTML = ax_total_corridas
+        }
     }
 
 }
@@ -95,6 +105,10 @@ function gerar_aleatorio() {
     return Number((Math.random() * 2 + 4).toFixed(1))
 }
 function comecar_jogo() {
+    if (cavalo_aposta == '') {
+        div_erros('Selecione um personagem')
+        return;
+    }
     for (let i = 0; i < ax_total_corridas; i++) {
         js_voltas[`vt_volta_${i}`] = [];
         for (let index_2 = 0; index_2 < vt_guardar_nomes.length; index_2++) {
@@ -109,8 +123,10 @@ function comecar_jogo() {
     }
     gerar_espaco_cavalo()
     tela_carregamento.style.display = "flex"
+    tela_aposta.style.display = 'none'
     setTimeout(() => {
         tela_carregamento.style.display = "none"
+        section_corrida.style.display = 'flex'
         animar_cavalos()
     }, 3000);
     // mostrar_podium()
@@ -221,4 +237,40 @@ function abrir_cadastro() {
         tela_carregamento.style.display = "none"
         section_cadastro.style.display = "flex"
     }, 2000);
+}
+function ir_aposta() {
+    if (vt_guardar_nomes.length >= 2) {
+        if (ax_total_corridas >= 5 && ax_total_corridas <= 10) {
+            section_cadastro.style.display = "none"
+            tela_aposta.style.display = "flex"
+            mostrar_apostas()
+        }
+        else {
+            div_erros('Cadastre um número de voltas valido')
+        }
+    } else {
+        div_erros('Cadastre mais cavalos')
+    }
+
+}
+
+function mostrar_apostas() {
+    aposta.innerHTML = ''
+    for (let i = 0; i < vt_guardar_nomes.length; i++) {
+        aposta.innerHTML += `
+            <div>
+                <p>${vt_guardar_nomes[i]}</p>
+                <img src="${cavalos[i][0]}" alt="" onclick="escolher_cavalo('${vt_guardar_nomes[i]}')" id="${vt_guardar_nomes[i]}">
+            </div>
+        `
+    }
+}
+function escolher_cavalo(nome) {
+    for (let i = 0; i < vt_guardar_nomes.length; i++) {
+        let imagem = document.getElementById(`${vt_guardar_nomes[i]}`)
+        imagem.style.filter = 'grayscale(60%)'
+    }
+    let imagem_escolhida = document.getElementById(`${nome}`)
+    imagem_escolhida.style.filter = 'grayscale(0%)'
+    cavalo_aposta = nome
 }

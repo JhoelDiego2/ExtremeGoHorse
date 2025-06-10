@@ -223,7 +223,7 @@ section {
     }
 }
 
-.div_erros button {
+.div_erros button,#botao_aposta {
     background-color: #00000000;
     color: white;
     padding: 1vh;
@@ -256,12 +256,16 @@ section {
 
 #body #section_cadastro {
     width: 100vw;
+    height: 100dvh;
     position: relative;
     display: flex;
     gap: 7vw;
     justify-content: center;
     align-items: center;
     padding: 0vh 5vw;
+    background: url('img/funod_casd.png');
+    background-position: center;
+    background-size: cover;
 }
 
 h2 {
@@ -314,31 +318,38 @@ input[type="text"]:focus {
     width: 100%;
     border-radius: 10px;
     backdrop-filter: blur(10px);
-
 }
 
 #body .div_cadastrados {
     display: flex;
     flex-direction: column;
     justify-content: start;
-    background-color: #ffffff;
-    height: 32vh;
+    background-color: #ffffffe3;
     overflow: hidden;
     overflow-y: auto;
+    border-radius: 10px;
+    box-shadow: 2px 2px 20px 2px rgb(115, 81, 131);
 }
-
+@keyframes aparecer {
+    from {
+        transform: translateY(-100%);
+    }
+}
 .div_cadastrados div {
     display: flex;
     border: solid 2px rgb(92, 42, 138);
     width: 35vw;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    padding: 5px 10px;
+    padding: 10px 10px;
+    font-size: 2rem;
+    animation: aparecer 2s ease;
+    width: 100%;
 }
 
 .div_cadastrados img {
     width: 7vw;
-    border-radius: 50px;
+    border-radius: 100px;
 }
 
 #lixeira {
@@ -348,15 +359,10 @@ input[type="text"]:focus {
 
 }
 
-.div_cadastro_painel {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding: 1vh 0vw;
-}
+
 
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 16px;
     /* Define a largura da barra de rolagem */
     background-color: rgb(226, 226, 226);
 }
@@ -383,13 +389,13 @@ input[type="text"]:focus {
     width: 40vw;
     border-radius: 15px;
     padding: 3px;
-    height: 40vh;
+    height: 70vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: linear-gradient(270deg, #bb5ba0, #5d2c4f, white);
-    animation: radiante-lateral 4s infinite linear alternate;
+    background: linear-gradient(270deg, #bb5ba063, #5d2c4f67, rgba(255, 255, 255, 0.363));
+    animation: radiante-lateral 7s infinite linear alternate;
     background-size: 300% 300%;
 }
 
@@ -407,9 +413,10 @@ input[type="text"]:focus {
     }
 }
 
-.div_cadastro_todos {
-    background-color: #cf1698;
+.div_cadastro {
+    background-color: #ffffff63;
     display: flex;
+    backdrop-filter: blur(10px);
 }
 
 
@@ -491,4 +498,63 @@ text {
   font-size: 4rem; /* diminui para garantir que caiba */
   fill: #ffffff;
   letter-spacing: 2px;
+}
+#body .div_cadastro_todos{
+}
+.div-cadastro{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+    padding: 1vh 5vw;
+    text-align: center;
+    width: 100%;
+}
+.cad_titulo{
+    font-size: 1.8rem;
+    font-weight: 800;
+}
+
+
+#body .div_cadastrados{
+    height: 70%;
+    width: 98%;
+}
+#tela_aposta{
+    background: radial-gradient(rgba(9, 10, 73, 0.13), rgba(1, 0, 5, 0.705)) , url('img/funod_casd.png');
+    background-position: center;
+    background-size: cover;
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+   padding-bottom: 40px;
+}
+.aposta{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+.aposta img{
+    cursor: pointer;
+  filter: grayscale(60%); 
+}
+.aposta img:hover{
+  filter: grayscale(0%); 
+}
+#tit_aposta{
+    font-size: 3rem;
+    text-transform: uppercase;
+}
+.aposta div p{
+    font-size: 1.5rem;
+    color: grey;
+    background-color: #000;
+}
+.aposta button{
+
+}
+#botao_aposta{
+    width: 100%;
 }
