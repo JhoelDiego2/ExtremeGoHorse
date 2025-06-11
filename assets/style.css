@@ -13,7 +13,7 @@ body {
     background-position: center;
     background-size: cover;
     background-size: 100%;
-   
+    overflow: hidden;
 }
 
 #section_corrida {
@@ -23,6 +23,11 @@ body {
     flex-direction: column;
     justify-content: center;
     position: relative;
+    background-color: #a684d7;
+    background: url('img/fundo_corrida.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 #section_corrida h2 {
@@ -31,11 +36,25 @@ body {
 }
 
 #section_corrida img {
-    width: 8.5vw;
+    width: 5vw;
+    transform: scale(1.2);
+}
+
+#titulo_corrida{
+    position: absolute;
+    top: 3vh;
+    width: 100vw;
+    font-size: 4rem;
+    
 }
 
 .espaco_total {
     width: 100vw;
+}
+
+.espaco_corrida{
+    position: absolute;
+    bottom: 0vh;
 }
 
 .espaco_total:nth-child(1) {
