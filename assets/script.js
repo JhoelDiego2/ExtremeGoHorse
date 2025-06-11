@@ -182,52 +182,99 @@ function gerar_espaco_cavalo() {
 // }
 var json_somatoria = {};
 
+// function animar_cavalos() {
+//     let espaco_disponivel_total = 90;
+//     let espaco_volta = espaco_disponivel_total / ax_total_corridas;
+//     let espaco_total = document.querySelectorAll('.espaco_total');
+
+//     // Inicializa a somatória dos cavalos
+//     for (let i = 0; i < vt_guardar_nomes.length; i++) {
+//         json_somatoria[`soma_${i}`] = 0;
+//     }
+
+//     let volta_atual = 0;
+
+//     let intervalo = setInterval(() => {
+//         var multipicador = 0
+//         if (volta_atual >= ax_total_corridas) {
+//             clearInterval(intervalo);
+//             return;
+//         }
+//         if (ax_total_corridas == 5) {
+//             multipicador = 3
+//         } else if (ax_total_corridas == 6) {
+//             multipicador = 2.7
+//         } else if (ax_total_corridas == 7) {
+//             multipicador = 2.6
+//         } else if (ax_total_corridas == 8) {
+//             multipicador = 2.2
+//         } else if (ax_total_corridas == 9) {
+//             multipicador = 2
+//         } else {
+//             multipicador = 1.8
+//         }
+
+//         for (let i = 0; i < vt_guardar_nomes.length; i++) {
+//             let tempo_volta = js_voltas[`vt_volta_${volta_atual}`][i];
+
+//             // Soma o tempo da volta ao cavalo
+//             json_somatoria[`soma_${i}`] += tempo_volta;
+
+//             // Move o cavalo proporcionalmente
+//             espaco_total[i].style.transition = "transform 1s ease";
+//             espaco_total[i].style.transform = `translateX(${(json_somatoria[`soma_${i}`] * multipicador).toFixed(2)}vw)`;
+//         }
+
+//         volta_atual++;
+
+//     }, 1000);
+// }
+
 function animar_cavalos() {
     let espaco_disponivel_total = 90;
-    let espaco_volta = espaco_disponivel_total / ax_total_corridas;
     let espaco_total = document.querySelectorAll('.espaco_total');
 
-    // Inicializa a somatória dos cavalos
+    // Inicializa somatórias
     for (let i = 0; i < vt_guardar_nomes.length; i++) {
         json_somatoria[`soma_${i}`] = 0;
     }
 
+    // Define multiplicador conforme a quantidade de voltas
+    const multiplicadores = {
+        5: 3,
+        6: 2.7,
+        7: 2.6,
+        8: 2.2,
+        9: 2
+    };
+    let multipicador = multiplicadores[ax_total_corridas] || 1.8;
+
     let volta_atual = 0;
 
     let intervalo = setInterval(() => {
-        var multipicador = 0
         if (volta_atual >= ax_total_corridas) {
             clearInterval(intervalo);
+
+            // Finaliza posições
+            for (let i = 0; i < vt_guardar_nomes.length; i++) {
+                let finalPos = (json_somatoria[`soma_${i}`] * multipicador).toFixed(2);
+                espaco_total[i].style.transition = "transform 1s ease";
+                espaco_total[i].style.transform = `translateX(${finalPos}vw)`;
+            }
             return;
         }
-        if (ax_total_corridas == 5) {
-            multipicador = 3
-        } else if (ax_total_corridas == 6) {
-            multipicador = 2.7
-        } else if (ax_total_corridas == 7) {
-            multipicador = 2.6
-        } else if (ax_total_corridas == 8) {
-            multipicador = 2.2
-        } else if (ax_total_corridas == 9) {
-            multipicador = 2
-        } else {
-            multipicador = 1.8
-        }
-
         for (let i = 0; i < vt_guardar_nomes.length; i++) {
             let tempo_volta = js_voltas[`vt_volta_${volta_atual}`][i];
-
-            // Soma o tempo da volta ao cavalo
             json_somatoria[`soma_${i}`] += tempo_volta;
 
-            // Move o cavalo proporcionalmente
+            let novaPos = (json_somatoria[`soma_${i}`] * multipicador).toFixed(2);
             espaco_total[i].style.transition = "transform 1s ease";
-            espaco_total[i].style.transform = `translateX(${(json_somatoria[`soma_${i}`] * multipicador).toFixed(2)}vw)`;
+            espaco_total[i].style.transform = `translateX(${novaPos}vw)`;
         }
 
         volta_atual++;
 
-    }, 1000);
+    }, 1000); 
 }
 const tela_inicial = document.getElementById('tela_inicial')
 function abrir_cadastro() {
