@@ -88,7 +88,7 @@ function preencher_painel() {
 function cadastrar_voltas() {
     var ax_voltas = ipt_cadastrar_voltas.value
     if (ax_voltas < 5 || ax_voltas > 10) {
-        div_erros(`Total de voltas: ${ax_voltas} Invalido. Insira um numero entre 5 e 10   `)
+        div_erros(`Total de voltas: ${ax_voltas} Inválidos. Insira um numero entre 5 e 10   `)
     } else {
         ax_total_corridas = ax_voltas
         if (ax_total_corridas != 0) {
@@ -99,7 +99,7 @@ function cadastrar_voltas() {
 }
 function voltar_cadastro() {
     div_cadastro_voltas.style.display = "none"
-    div_cadastro_cavalo.style.display = "none"
+    div_cadastro_cavalo.style.display = "flex"
 }
 function gerar_aleatorio() {
     return Number((Math.random() * 2 + 4).toFixed(1))
@@ -129,7 +129,7 @@ function comecar_jogo() {
         section_corrida.style.display = 'flex'
         animar_cavalos()
     }, 3000);
-    // mostrar_podium()
+    mostrar_podium()
 }
 function mostrar_podium() {
     for (let i = 0; i < vt_resultado_final.length - 1; i++) {
@@ -246,7 +246,7 @@ function ir_aposta() {
             mostrar_apostas()
         }
         else {
-            div_erros('Cadastre um número de voltas valido')
+            div_erros('Cadastre um número de voltas válido')
         }
     } else {
         div_erros('Cadastre mais cavalos')
