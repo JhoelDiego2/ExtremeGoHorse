@@ -159,7 +159,7 @@ function gerar_espaco_cavalo() {
         <div class="espaco_total" id="espaco_id_${i}">
             <div class="espaco_cavalo">
                 <p>${vt_guardar_nomes[i]}</p>
-                <img src="assets/img/MLP Walking by The-Paper-Pony.gif" alt="">
+                <img src="${cavalos[i][2]}" alt="">
             </div>
         </div>
        `

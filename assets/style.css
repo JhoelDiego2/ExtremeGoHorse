@@ -68,7 +68,7 @@ body {
 }
 
 .espaco_cavalo {
-    background-color: aqua;
+    /* background-color: aqua; */
     width: 8vw;
     text-align: center;
     letter-spacing: 2px;
@@ -266,6 +266,7 @@ section {
     background: url('img/funod_casd.png');
     background-position: center;
     background-size: cover;
+    color:rgb(123, 0, 74);
 }
 
 h2 {
@@ -295,7 +296,7 @@ input[type="text"]:focus {
 
 .btn-grad {
     padding: 12px;
-    background: linear-gradient(45deg, #b36aff, #cc99ff);
+    background: linear-gradient(45deg, #ba0cd9, #e62ed3);
     border: none;
     border-radius: 25px;
     color: white;
@@ -306,7 +307,7 @@ input[type="text"]:focus {
 }
 
 .btn-grad:hover {
-    background: linear-gradient(45deg, #cc99ff, #b36aff);
+    background: linear-gradient(45deg,  #e62ed3, #ba0cd9);
 }
 
 #body .div_cadastro {
@@ -329,6 +330,7 @@ input[type="text"]:focus {
     overflow-y: auto;
     border-radius: 10px;
     box-shadow: 2px 2px 20px 2px rgb(115, 81, 131);
+    color: #000;
 }
 @keyframes aparecer {
     from {
