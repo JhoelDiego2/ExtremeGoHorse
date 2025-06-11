@@ -105,6 +105,7 @@ function gerar_aleatorio() {
     return Number((Math.random() * 2 + 4).toFixed(1))
 }
 function comecar_jogo() {
+    vt_resultado_final = []
     if (cavalo_aposta == '') {
         div_erros('Selecione um personagem')
         return;
@@ -178,7 +179,7 @@ function animar_cavalos() {
     const multiplicadores = {
         5: 3,
         6: 2.7,
-        7: 2.6,
+        7: 2.5,
         8: 2.2,
         9: 2
     };
@@ -196,6 +197,7 @@ function animar_cavalos() {
                 espaco_total[i].style.transform = `translateX(${finalPos}%)`;
             }
 
+            setTimeout(() => mostra_resultado_aposta(), 1000)
             return;
         }
 
@@ -213,6 +215,7 @@ function animar_cavalos() {
         volta_atual++;
 
     }, 2000);
+
 
 }
 const tela_inicial = document.getElementById('tela_inicial')
@@ -259,4 +262,14 @@ function escolher_cavalo(nome) {
     let imagem_escolhida = document.getElementById(`${nome}`)
     imagem_escolhida.style.filter = 'grayscale(0%)'
     cavalo_aposta = nome
+}
+
+function mostra_resultado_aposta() {
+    let resultado = ''
+    if (cavalo_aposta == vt_guardar_nomes[0]) {
+        resultado = 'Uia!!! Você ganhou a aposta!!'
+    } else {
+        resultado = 'Que pena, você perdeu a aposta!!'
+    }
+    div_erros(resultado)
 }
