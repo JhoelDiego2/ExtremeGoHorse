@@ -153,7 +153,7 @@ function mostrar_podium() {
         `;
 }
 function gerar_espaco_cavalo() {
-    var section_corrida = document.getElementById('section_corrida')
+    var section_corrida = document.querySelector('.espaco_corrida')
     for (let i = 0; i < vt_guardar_nomes.length; i++) {
         section_corrida.innerHTML += `
         <div class="espaco_total" id="espaco_id_${i}">
@@ -165,21 +165,6 @@ function gerar_espaco_cavalo() {
        `
     }
 }
-// var json_somatoria = {}
-// function animar_cavalos() {
-//     let espaco_disponivel_total = 90;
-//     let espaco_volta = espaco_disponivel_total / ax_total_corridas;
-//     let espaco_total = document.querySelectorAll('.espaco_total')
-//     for (let i = 0; i < vt_guardar_nomes; i++) {
-//         json_somatoria[`soma_${i}`] = 0
-//     }
-//     for (let i_dois = 0; i_dois < ax_total_corridas; i_dois++) {
-//         for (let i_tres = 0; i_tres < vt_guardar_nomes.length; i_tres++) {
-//             json_somatoria[`soma_${i_dois}`] += js_voltas[`vt_volta_${i_dois}`][i_tres];
-//             espaco_total[i_tres].style.transform =`translateX(${json_somatoria[`soma_${i_dois}`]}vw)`;
-//         }
-//     }
-// }
 var json_somatoria = {};
 
 function animar_cavalos() {
