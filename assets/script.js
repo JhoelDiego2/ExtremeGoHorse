@@ -25,7 +25,7 @@ function cadastrar() {
     if (nome_cavalo == "") {
         div_erros("Por favor, preencha os campos corretamente!")
     } else if (vt_guardar_nomes.includes(nome_cavalo)) {
-        div_erros("Nome do cavalo já cadastrado")
+        div_erros("Nome do pônei já cadastrado")
     } else {
         vt_guardar_nomes.push(nome_cavalo)
         ipt_nome_cavalo.value = '';
@@ -35,9 +35,9 @@ function cadastrar() {
 function avancar_cadastro_voltas() {
 
     if (vt_guardar_nomes.length < 2) {
-        div_erros("Por favor, insira no minimo 2 cavalos")
+        div_erros("Por favor, insira no minimo 2 pôneis")
     } else if (vt_guardar_nomes.length > 7) {
-        div_erros("Por favor, insira no máximo 7 cavalos")
+        div_erros("Por favor, insira no máximo 7 pôneis")
     } else {
         div_cadastro_cavalo.style.display = "none"
         div_cadastro_voltas.style.display = "flex"
@@ -72,7 +72,7 @@ function preencher_painel() {
 
     for (let i = vt_guardar_nomes.length - 1; i >= 0; i--) {
         if (i > 5) {
-            div_erros("Numero máximo de cavalos cadastrados! Clique em Avançar")
+            div_erros("Número máximo de pôneis cadastrados! Clique em Avançar")
         } else {
             div_cadastrados.innerHTML += `
         <div>
@@ -88,7 +88,7 @@ function preencher_painel() {
 function cadastrar_voltas() {
     var ax_voltas = ipt_cadastrar_voltas.value
     if (ax_voltas < 5 || ax_voltas > 10) {
-        div_erros(`Total de voltas: ${ax_voltas} Invalido. Insira um numero entre 5 e 10   `)
+        div_erros(`Total de voltas: ${ax_voltas} Inválidos. Insira um numero entre 5 e 10   `)
     } else {
         ax_total_corridas = ax_voltas
         if (ax_total_corridas != 0) {
@@ -99,7 +99,7 @@ function cadastrar_voltas() {
 }
 function voltar_cadastro() {
     div_cadastro_voltas.style.display = "none"
-    div_cadastro_cavalo.style.display = "none"
+    div_cadastro_cavalo.style.display = "flex"
 }
 function gerar_aleatorio() {
     return Number((Math.random() * 2 + 4).toFixed(1))
@@ -130,7 +130,7 @@ function comecar_jogo() {
         section_corrida.style.display = 'flex'
         animar_cavalos()
     }, 3000);
-    // mostrar_podium()
+    mostrar_podium()
 }
 function mostrar_podium() {
     for (let i = 0; i < vt_resultado_final.length - 1; i++) {
@@ -235,10 +235,10 @@ function ir_aposta() {
             mostrar_apostas()
         }
         else {
-            div_erros('Cadastre um número de voltas valido')
+            div_erros('Cadastre um número válido de voltas.')
         }
     } else {
-        div_erros('Cadastre mais cavalos')
+        div_erros('Cadastre mais pôneis')
     }
 
 }
