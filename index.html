@@ -9,7 +9,7 @@
 </head>
 
 <body id="body">
-    <section id="tela_inicial" style="display: noe;">
+    <section id="tela_inicial" style="display: non;">
         <svg viewBox="0 0 800 150" xmlns="http://www.w3.org/2000/svg">
             <defs>
                 <path id="curva" d="M 50,100 Q 400,0 750,100" />
@@ -21,6 +21,20 @@
             </text>
         </svg>
         <button onclick="abrir_cadastro()">Começar</button>
+    </section>
+    <section id="tela_inicial" class="final" style="display: none;" >
+        <svg viewBox="0 0 800 150" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <path id="curva" d="M 50,100 Q 400,0 750,100" />
+            </defs>
+            <text>
+                <textPath href="#curva" startOffset="50%" text-anchor="middle">
+                    JOGAR NOVAMENTE?
+                </textPath>
+            </text>
+        </svg>
+        <button onclick="window.location.href='index.html'">SIM</button>
+        <button onclick="window.location.href='https:/www.google.com/'">NÃO</button>
     </section>
     <section id="tela_aposta" style="display: none;">
 
@@ -73,9 +87,9 @@
         <div class="espaco_corrida">
 
 
-        <div>
+            <div>
 
-</div>
+            </div>
 
     </section>
     <section id="section_cadastro" style=" display: none;">
@@ -118,15 +132,24 @@
         <div class="div_erros">
             <img src="assets/img/img_perso.png" alt="">
             <p id="texto_erro">
-             
+
             </p>
-            <button onclick="fechar_modal()">OK</button>
+            <button onclick="fechar_modal()" id="button_modal">OK</button>
 
         </div>
     </section>
+
+
     <!-- exeprimento so  -->
 
-    <p id="resultado" style="display: none;"></p>
+    <section id="section_podium" style="display: none; flex-direction: column;">
+        <div class="div_erros">
+            <h2>🏆 Pódio Final</h2>
+            <div id="resultado"></div>
+            <button onclick="fechar_modal_pod()" id="button_modal">OK</button>
+        </div>
+            
+    </section>
 
 </body>
 

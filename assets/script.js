@@ -10,6 +10,10 @@ var js_voltas = {}
 var vt_resultado_final = []
 var cavalo_aposta = ''
 var aposta = document.querySelector('.aposta')
+var historico = false
+var auto = false
+const sectionPodium = document.getElementById('section_podium');
+const resultado = document.getElementById('resultado');
 var cavalos = {
     0: ['assets/img/11.png', 'assets/img/raonm.jpeg', 'assets/img/2.gif'],
     1: ['assets/img/12.png', 'assets/img/fluttershy.jpeg', 'assets/img/6.gif'],
@@ -55,33 +59,55 @@ function deletar_cavalo(nome) {
         }
     }
 }
-
+var div_erros_div = document.querySelector('.section_erros')
+var div = div_erros_div.querySelector('.div_erros')
+var botao = document.getElementById('button_modal')
 function div_erros(texto) {
-    var div_erros = document.querySelector('.section_erros')
-    div_erros.style.display = "flex"
-    texto_erro.innerHTML = texto;
 
+    if (historico) {
+        mostrar_podium_real()
+        historico = false
+        botao.onclick = histoei_gerar
+    } else {
+        div.style.height = "60vh"
+        botao.onclick = fechar_modal
+        historico = false
+    }
+    if (auto) {
+        div.style.height = "auto"
+        auto = false
+        botao.onclick = final
+    } else {
+        div.style.height = "60vh"
+    }
+    div_erros_div.style.display = "flex"
+    texto_erro.innerHTML = texto;
 }
 function fechar_modal() {
     var div_erros = document.querySelector('.section_erros')
     div_erros.style.display = "none"
 }
+let maior = false
 function preencher_painel() {
     var div_cadastrados = document.querySelector('.div_cadastrados')
+    if (vt_guardar_nomes.length == 7) {
+        vt_guardar_nomes.splice(6, 1)
+        maior = true
+    }
     div_cadastrados.innerHTML = ''
-
     for (let i = vt_guardar_nomes.length - 1; i >= 0; i--) {
-        if (i > 5) {
+        if (maior) {
             div_erros("Número máximo de pôneis cadastrados! Clique em Avançar")
-        } else {
-            div_cadastrados.innerHTML += `
+            maior = false
+        }
+        div_cadastrados.innerHTML += `
         <div>
                     <img src="${cavalos[i][1]}" alt="">
                     <p> ${vt_guardar_nomes[i]}</p>
                     <img src="assets/img/lixeira.png" id="lixeira" alt="" onclick="deletar_cavalo('${vt_guardar_nomes[i]}')">
          </div>
         `
-        }
+
     }
 
 }
@@ -105,6 +131,7 @@ function gerar_aleatorio() {
     return Number((Math.random() * 2 + 4).toFixed(1))
 }
 function comecar_jogo() {
+    vt_resultado_final = []
     if (cavalo_aposta == '') {
         div_erros('Selecione um personagem')
         return;
@@ -127,30 +154,32 @@ function comecar_jogo() {
     setTimeout(() => {
         tela_carregamento.style.display = "none"
         section_corrida.style.display = 'flex'
+        mostrar_podium()
         animar_cavalos()
     }, 3000);
-    mostrar_podium()
 }
-function mostrar_podium() {
-    for (let i = 0; i < vt_resultado_final.length - 1; i++) {
-        for (let index_2 = 0; index_2 < vt_resultado_final.length - 1 - i; index_2++) {
-            if (vt_resultado_final[index_2] > vt_resultado_final[index_2 + 1]) {
-                var tempTotal = vt_resultado_final[index_2];
-                vt_resultado_final[index_2] = vt_resultado_final[index_2 + 1];
-                vt_resultado_final[index_2 + 1] = tempTotal;
+function mostrar_podium(params) {
+    let resultado_completo = vt_guardar_nomes.map((nome, index) => ({
+        nome,
+        tempo: vt_resultado_final[index]
+    })).sort((a, b) => a.tempo - b.tempo);
+    return resultado_completo
+}
 
-                var tempNome = vt_guardar_nomes[index_2];
-                vt_guardar_nomes[index_2] = vt_guardar_nomes[index_2 + 1];
-                vt_guardar_nomes[index_2 + 1] = tempNome;
-            }
-        }
+function mostrar_podium_real() {
+
+
+    sectionPodium.style.display = 'flex';
+
+    let resultado_completo = mostrar_podium()
+
+    resultado.innerHTML = `
+        🥇 1º lugar: ${resultado_completo[0].nome} (Tempo: ${resultado_completo[0].tempo.toFixed(1)}s)<br>
+        🥈 2º lugar: ${resultado_completo[1].nome} (Tempo: ${resultado_completo[1].tempo.toFixed(1)}s)<br>
+    `;
+    if (vt_guardar_nomes.length >= 3) {
+        resultado.innerHTML += `        🥉 3º lugar: ${resultado_completo[2].nome} (Tempo: ${resultado_completo[2].tempo.toFixed(1)}s)<br>`
     }
-
-    resultado.innerHTML += `
-        1º lugar: ${vt_guardar_nomes[0]} (Tempo: ${vt_resultado_final[0].toFixed(1)})<br>
-        2º lugar: ${vt_guardar_nomes[1]} (Tempo: ${vt_resultado_final[1].toFixed(1)})<br>
-        3º lugar: ${vt_guardar_nomes[2]} (Tempo: ${vt_resultado_final[2].toFixed(1)})<br>
-        `;
 }
 function gerar_espaco_cavalo() {
     var section_corrida = document.querySelector('.espaco_corrida')
@@ -178,7 +207,7 @@ function animar_cavalos() {
     const multiplicadores = {
         5: 3,
         6: 2.7,
-        7: 2.6,
+        7: 2.5,
         8: 2.2,
         9: 2
     };
@@ -196,6 +225,7 @@ function animar_cavalos() {
                 espaco_total[i].style.transform = `translateX(${finalPos}%)`;
             }
 
+            setTimeout(() => mostra_resultado_aposta(), 1000)
             return;
         }
 
@@ -212,7 +242,8 @@ function animar_cavalos() {
 
         volta_atual++;
 
-    }, 2000);
+    }, 1200);
+
 
 }
 const tela_inicial = document.getElementById('tela_inicial')
@@ -259,4 +290,43 @@ function escolher_cavalo(nome) {
     let imagem_escolhida = document.getElementById(`${nome}`)
     imagem_escolhida.style.filter = 'grayscale(0%)'
     cavalo_aposta = nome
+}
+
+function mostra_resultado_aposta() {
+    let resultado = ''
+    let apos = vt_guardar_nomes.length - 1
+    if (cavalo_aposta == vt_guardar_nomes[apos]) {
+        resultado = 'Uia!!! Você ganhou a aposta!!'
+    } else {
+        resultado = 'Que pena, você perdeu a aposta!!'
+    }
+    historico = true
+    div_erros(resultado)
+
+}
+function histoei_gerar() {
+    auto = true
+
+    let historicoFormatado = `
+        <br>
+        <br>
+        <br>`;
+
+    // Percorre o objeto js_voltas e formata cada volta
+    for (const [chave, tempos] of Object.entries(js_voltas)) {
+        const numeroVolta = chave.split("_")[2]; // Extrai o número (0, 1, 2...)
+        historicoFormatado += `
+
+        
+        Volta ${Number(numeroVolta) + 1}: ${tempos.join("s, ")} s\n <br>`;
+    }
+    div_erros(historicoFormatado);
+}
+function fechar_modal_pod() {
+    sectionPodium.style.display = "none"
+}
+function final() {
+    document.getElementById('section_corrida').style.display = "none"
+    document.querySelector('.final').style.display = "flex"
+    document.querySelector('.section_erros').style.display = "none"
 }
