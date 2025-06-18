@@ -1,59 +1,49 @@
+# 🌈🐴 Extreme Go Horse — Edição My Little Pony
 
-# 🌑 Extreme Go Horse
+Desafio da aula de Algoritmo na última semana de aula, proposto pelo professor Claudio Freezarini. Utilizando **pair programming**, desenvolvemos um site que simula uma corrida de pôneis! O desafio exigia que os papéis entre desenvolvedor e copiloto fossem alternados a cada 10 minutos. No final da aula, houve uma votação entre os alunos para decidir o melhor "turfle amigo". 🦄
 
-Desafio da aula de algoritmo na última semana de aula proposta pelo professor Claudio Freezarini na qual utilizando pair programming desenvolvemos um site na qual simulamos uma corrida de cavalos e o desafio era que intercalavamos os desenvolvedores e co-piulotos a cada 10 minutos, depois teve uma votação na sala para decidir o melhor turfle amigo 
+## 🏆 Resultado da Votação:
 
-## Resultado da votação  : 
-
-> Extreme Go Hrose ganhou o primeiro lugar
+> 🌟 **Extreme Go Horse** conquistou o primeiro lugar! 🌟
 
 <div align="center"> <img src="https://i.imgur.com/7NgguS0.png" width="700"/> </div>
-<div align="center" >
+<div align="center">
 <img src="https://i.imgur.com/62dMYrS.png" width="230">
-<img src="https://i.imgur.com/HhY7JRv.png"  width="230">
-<img src="https://i.imgur.com/b0VCuXd.png"width="230">
+<img src="https://i.imgur.com/HhY7JRv.png" width="230">
+<img src="https://i.imgur.com/b0VCuXd.png" width="230">
 </div>
-<div align="center" >
-<img src="https://i.imgur.com/DfThM5g.png"width="230">
-<img src="https://i.imgur.com/w30QMO5.pngg" width="230">
+<div align="center">
+<img src="https://i.imgur.com/DfThM5g.png" width="230">
+<img src="https://i.imgur.com/w30QMO5.png" width="230">
 <img src="https://i.imgur.com/MMhLLUw.png" width="230">
 </div>
 
 ## 🕹️ Demonstração
 
-- 🎨 **Site estatico:**  
+- 🌐 **Site Estático:**  
 [🔗 Acessar Site](https://extreme-go-horse-sepia.vercel.app/)
-
-
 
 ## 📖 O que é Pair Programming - Programação em Par?
 
-A Programação em Par é uma técnica ágil de desenvolvimento de software originada na Extreme 
-Programming (XP), onde dois programadores se unem em um computador. As duas pessoas 
-trabalham juntas para projetar, codificar e testar o desenvolvimento de uma classe, de um 
-método ou de um trecho de código. 
-
+A Programação em Par é uma técnica ágil de desenvolvimento de software originada na Extreme Programming (XP), onde dois programadores trabalham juntos no mesmo computador. As duas pessoas colaboram ativamente para projetar, codificar e testar um trecho de código. 
 
 ## 🚩 Funcionalidades
 
-- **Cadastro**  
-- **Deletação**  
-- **Sistema de apostas de corrida**  
-- **Historico de voltas dos corredores**  
-- **Alertas personalizados**  
-
+- Cadastro de usuários  
+- Exclusão de contas  
+- Sistema de apostas nas corridas  
+- Histórico de voltas dos corredores  
+- Alertas personalizados  
 
 ## 🚧 Status do Projeto
 
-🔨 **Concluido**  
-
+🎠 **Concluído**
 
 ## 🛠️ Tecnologias Utilizadas
 
-| Stack            | Ferramentas                                |
-|------------------|--------------------------------------------|
-| **Front-End**    | HTML5, CSS3, JavaScript, Chart.js         |
-
+| 💻 Stack         | 🧰 Ferramentas                       |
+|------------------|-------------------------------------|
+| 🌸 **Front-End** | HTML5, CSS3, JavaScript, Chart.js   |
 ## ✒️ Autores
 
 <table>
