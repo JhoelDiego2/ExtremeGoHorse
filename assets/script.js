@@ -75,6 +75,7 @@ function div_erros(texto) {
     }
     if (auto) {
         div.style.height = "auto"
+        div.style.widith = '70vw'
         auto = false
         botao.onclick = final
     } else {
@@ -172,13 +173,16 @@ function mostrar_podium_real() {
     sectionPodium.style.display = 'flex';
 
     let resultado_completo = mostrar_podium()
+    let primeiro = vt_guardar_nomes.length - 1
+    let segundo = primeiro - 1
+    let terceiro = primeiro -2
 
     resultado.innerHTML = `
-        🥇 1º lugar: ${resultado_completo[0].nome} (Tempo: ${resultado_completo[0].tempo.toFixed(1)}s)<br>
-        🥈 2º lugar: ${resultado_completo[1].nome} (Tempo: ${resultado_completo[1].tempo.toFixed(1)}s)<br>
+        🥇 1º lugar: ${resultado_completo[primeiro].nome} (Tempo: ${resultado_completo[0].tempo.toFixed(1)}s)<br>
+        🥈 2º lugar: ${resultado_completo[segundo].nome} (Tempo: ${resultado_completo[1].tempo.toFixed(1)}s)<br>
     `;
     if (vt_guardar_nomes.length >= 3) {
-        resultado.innerHTML += `        🥉 3º lugar: ${resultado_completo[2].nome} (Tempo: ${resultado_completo[2].tempo.toFixed(1)}s)<br>`
+        resultado.innerHTML += `        🥉 3º lugar: ${resultado_completo[terceiro].nome} (Tempo: ${resultado_completo[2].tempo.toFixed(1)}s)<br>`
     }
 }
 function gerar_espaco_cavalo() {
